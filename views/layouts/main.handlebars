@@ -16,6 +16,8 @@
 </style>
 
 <body>
+    {{#if login}}
+    {{else}}
     <nav class="navbar navbar-expand-lg navbar-light bg-light border">
         <a class="navbar-brand mx-5" href="/"><img width="200" src="img/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,20 +37,22 @@
                     <a class="nav-link" href="/contato">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
                 <li><a class="nav-link" href="/cadastrar-produto">Nova Transação</a></li>
             </ul>
-            <form class="form-inline mx-5 my-2 my-lg-0">
-                <input class="mr-sm-2 p-1" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><img width="20" src="img/lupa.png"
-                        alt=""></button>
+            <form method="GET" action="/buscar-produto" class="form-inline mx-5 my-2 my-lg-0">
+                <input class="mr-sm-2 p-1" type="text" placeholder="Search" name="nome" id="nome">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+                    <img width="20" src="img/lupa.png" alt="">
+                </button>
             </form>
         </div>
     </nav>
-
+    {{/if}}
     {{{body}}}
-
+    {{#if login}}
+    {{else}}
     <footer class="bg-light text-light border">
         <div class="container-fluid py-3">
             <div class="row">
@@ -64,7 +68,7 @@
                             <a class="nav-link" href="/contato">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/     logout">Logout</a>
                         </li>
                         <li>
                             <a class="nav-link" href="/cadastrar-produto">Nova Transação</a>
@@ -79,7 +83,8 @@
                         diferentes modalidades de ensino, com base na conjugação de conhecimentos técnicos e
                         tecnológicos às suas práticas pedagógicas.
                     </p>
-                    <img width="100" class="my-2 d-inline rounded-circle" src="https://github.com/pablolucas890.png" alt="">
+                    <img width="100" class="my-2 d-inline rounded-circle" src="https://github.com/pablolucas890.png"
+                        alt="">
                     <img width="100" class="d-inline rounded-circle" src="https://github.com/joaopaulo418.png" alt="">
                     <div class="d-inline text-center" style="color:#112221; padding-left: 20px;">
                         &copy 2020 Copyright: <a class="d-inline nav-link" href="#"> Pablo e Joao</a>
@@ -88,6 +93,7 @@
             </div>
         </div>
     </footer>
+    {{/if}}
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

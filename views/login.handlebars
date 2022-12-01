@@ -1,0 +1,36 @@
+{{#if mensagemErro}}
+<div class="alert alert-danger">
+    {{mensagemErro}}
+</div>
+{{/if}}
+<form action="" method="post">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="user" class="form-label">Usuário:</label>
+            <input type="text" name="user" id="user" class="form-control" required />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="pwd" class="form-label">Senha:</label>
+            <input type="password" name="pwd" id="pwd" class="form-control" required />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" name="keep_logged" id="keep_logged">
+                <label class="form-check-label" for="keep_logged">
+                    Mantenha-me logado
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <button class="btn btn-primary">
+                Entrar
+            </button>
+        </div>
+    </div>
+</form>

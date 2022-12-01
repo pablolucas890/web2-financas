@@ -43,13 +43,10 @@
             </div>
             <label class="my-2" for="#">Categoria</label>
             <select class="form-select" name="categoria" aria-label="Categoria">
-                <option selected>Categoria</option>
-                <option value="1">Estudos</option>
-                <option value="2">Casa</option>
-                <option value="3">Viagem</option>
-                <option value="4">Compras</option>
-                <option value="5">Supermercado</option>
-                <option value="6">Farmacia</option>
+                <option value="0" selected>Categoria</option>
+                {{#each categorias}}
+                <option value={{{id_categoria}}}>{{{nome_categoria}}}</option>
+                {{/each}}
             </select>
             <button type="submit" class="btn btn-primary my-3">Salvar</button>
         </form>

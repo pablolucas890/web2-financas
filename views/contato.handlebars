@@ -1,49 +1,29 @@
-<h2>Contato</h2>
+<h2 class="text-center w-100 mt-3">{{tituloPagina}}</h2>
+<div class="text-center w-100 mt-3">
+    <strong class="text-center w-100 mt-3">{{mensagemErro}}</strong>
+</div>
 
-{{#if dadosValidos}}
-    <div>
-        <strong>Nome: </strong> {{ nome }} <br>
-        <strong>Email: </strong> {{ email }} <br>
-        <strong>Idade: </strong> {{ idade }} <br>
-        Linguagens Selecionadas: <br>
-        {{#if linguagens}}
-            <ul>
-                {{#each linguagens}}
-                    <li>{{ this }}</li>
-                {{/each}}
-            </ul>
-        {{else}}
-            <b>Nenhuma linguagem foi selecionada!</b>
-        {{/if}}
+<div class="mx-md-5 px-md-5">
+    <div class="mx-md-5 px-md-5">
+        <form class="m-5 p-5 bg-light border" method="post" action="/contato">
+            <div class="form-group my-2">
+                <label for="#">Nome: </label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o Nome">
+                <small id="helpName" class="form-text text-muted">Nome</small>
+            </div>
+            <div class="form-group my-2">
+                <label for="#">Email: </label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Digite o Email ">
+                <small id="helpEmail" class="form-text text-muted">Email</small>
+            </div>
+            <div class="form-group my-2">
+                <label for="#">Mensagem: </label>
+                <textarea class="form-control" name="mensagem" placeholder="Digite a Mensagem" id="mensagem" cols="30"
+                    rows="10"></textarea>
+                <small id="mansagemHelp" class="form-text text-muted">Mensagem</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary my-3">Salvar</button>
+        </form>
     </div>
-{{else}}
-    <div style="color: red;">
-        {{ mensagemErro }}
-    </div>
-{{/if}}
-
-<form method="post" action="/contato">
-
-    <p>
-        Nome: <br>
-        <input type="text" name="nome" value="" />        
-    </p>
-    <p>
-        E-mail: <br>
-        <input type="email" name="email" value="" />  
-    </p>
-     <p>
-        Idade: <br>
-        <input type="number" name="idade" value="" />  
-    </p>
-    <p>
-        Linguagens de Programação preferidas: <br>
-        <input type="checkbox" name="linguagens[]" value="C#"> C# <br>
-        <input type="checkbox" name="linguagens[]" value="JavaScript"> JavaScript <br>
-        <input type="checkbox" name="linguagens[]" value="Java"> Java <br>
-        <input type="checkbox" name="linguagens[]" value="ColdFusion"> ColdFusion <br>
-    </p>
-    <button>
-        Enviar
-    </button>
-</form>
+</div>

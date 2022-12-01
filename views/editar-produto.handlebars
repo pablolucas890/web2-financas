@@ -1,33 +1,3 @@
-{{!-- <h1>{{tituloPagina}}</h1>
-
-{{#if mensagem}}
-    <p style="color: {{ cor }};">
-        {{ mensagem }}
-    </p>
-{{/if}}
-
-<form method="POST" action="/editar-produto">
-    <p>
-        <label>Nome do Produto</label>
-        <input type="text" name="nome" value="{{ objProduto.nome_produto }}"/>
-    </p>
-    <p>
-        <label>Preço do Produto</label>
-        <input type="number" name="preco" value="{{ objProduto.preco_produto }}" step="any"/>
-    </p>
-    <p>
-        <label>Ativo:</label>
-        {{#if objProduto.ativo}}
-            <input type="checkbox" name="ativo" value="1" checked/> Ativo
-        {{else}}
-            <input type="checkbox" name="ativo" value="1" /> Ativo
-        {{/if}}
-    </p>
-    <button type="submit">
-        Salvar
-    </button>
-    <input type="hidden" name="id" value="{{objProduto.id_produto}}">
-</form> --}}
 <h2 class="text-center w-100 mt-3">{{tituloPagina}}</h2>
 
 {{#if mensagem}}
@@ -37,7 +7,8 @@
 {{/if}}
 <div class="mx-md-5 px-md-5">
     <div class="mx-md-5 px-md-5">
-        <form class="m-5 p-5 bg-light border" method="POST" action="/cadastrar-produto">
+        <form class="m-5 p-5 bg-light border" method="POST" action="/editar-produto">
+            <input type="hidden" value="{{financa.id_financa}}" name="id" id="id">
             <div class="form-group my-2">
                 <label for="#">Titulo da Transação</label>
                 <input type="text" class="form-control" id="titulo" name="titulo"
@@ -48,8 +19,8 @@
                 <div class="col-6">
                     <label for="#">Valor (R$)</label>
                     <div>
-                        <input type="number" value="{{financa.valor}}" class="d-inline form-control w-25" id="valor" name="valor"
-                            placeholder="Valor da Transação">
+                        <input type="number" value="{{financa.valor}}" class="d-inline form-control w-25" id="valor"
+                            name="valor" placeholder="Valor da Transação">
                         <h4 class="d-inline">,00</h4>
                     </div>
                     <small id="emailHelp" class="form-text text-muted">Valor da Transação</small>
@@ -61,7 +32,7 @@
                         {{#if financa.tipo}}
                         <input class="form-check-input" type="radio" name="tipo" id="entrada" value="entrada" checked>
                         {{else}}
-                        <input class="form-check-input" type="radio" name="tipo" id="entrada" value="entrada" >
+                        <input class="form-check-input" type="radio" name="tipo" id="entrada" value="entrada">
                         {{/if}}
                         <label class="form-check-label" for="entrada">
                             Entrada
@@ -80,14 +51,16 @@
                 </div>
             </div>
             <label class="my-2" for="#">Categoria</label>
+
             <select class="form-select" name="categoria" aria-label="Categoria">
-                <option selected>Categoria</option>
-                <option value="1">Estudos</option>
-                <option value="2">Casa</option>
-                <option value="3">Viagem</option>
-                <option value="4">Compras</option>
-                <option value="5">Supermercado</option>
-                <option value="6">Farmacia</option>
+                <option value="0">Categoria</option>
+                {{#each categorias}}
+                {{#if checked}}
+                <option value={{{id_categoria}}} selected>{{{nome_categoria}}}</option>
+                {{else}}
+                <option value={{{id_categoria}}}>{{{nome_categoria}}}</option>
+                {{/if}}
+                {{/each}}
             </select>
             <button type="submit" class="btn btn-primary my-3">Salvar</button>
         </form>
