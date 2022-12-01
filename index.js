@@ -360,8 +360,8 @@ app.post('/contato', async function (request, response) {
     if (nome.length < 3)
         mensagemErro += 'Nome precisa ter pelo menos 3 letras!   -  ';
 
-    if (mensagem.length < 20)
-        mensagemErro += 'Mensagem precisa ter pelo menos 20 letras!   -  ';
+    if (mensagem.length < 20 || mensagem.length > 100)
+        mensagemErro += 'Mensagem precisa ter pelo menos 20 letras e menos de 100!   -  ';
 
     if (!email)
         mensagemErro += 'E-mail é inválido !   -  ';

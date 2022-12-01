@@ -1,20 +1,12 @@
+DROP DATABASE IF EXISTS santos_financeiro;
 CREATE DATABASE santos_financeiro;
 USE santos_financeiro;
+
 CREATE TABLE categoria(
     id_categoria INT AUTO_INCREMENT,
     nome_categoria VARCHAR(100) NOT NULL,
     PRIMARY KEY (id_categoria)
 );
-CREATE TABLE financas(
-    id_financa INT AUTO_INCREMENT,
-    titulo VARCHAR(100) NOT NULL,
-    valor FLOAT NOT NULL,
-    tipo boolean DEFAULT false,
-    id_categoria INT NOT NULL,
-    PRIMARY KEY (id_financa),
-    FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
-);
-
 INSERT INTO categoria (nome_categoria) VALUES ("Estudos");
 INSERT INTO categoria (nome_categoria) VALUES ("Casa");
 INSERT INTO categoria (nome_categoria) VALUES ("Viagem");
@@ -22,8 +14,17 @@ INSERT INTO categoria (nome_categoria) VALUES ("Compras");
 INSERT INTO categoria (nome_categoria) VALUES ("Supermercado");
 INSERT INTO categoria (nome_categoria) VALUES ("Farmacia");
 
-ALTER TABLE financas ADD data varchar(20);
-ALTER TABLE financas ADD hora varchar(20);
+CREATE TABLE financas(
+    id_financa INT AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    valor FLOAT NOT NULL,
+    tipo boolean DEFAULT false,
+    id_categoria INT NOT NULL,
+    data varchar(20),
+    hora varchar(20),
+    PRIMARY KEY (id_financa),
+    FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
+);
 
 CREATE TABLE contato(
     id_contato INT AUTO_INCREMENT,
@@ -40,5 +41,6 @@ CREATE TABLE usuarios(
     token VARCHAR(100) NULL,
     PRIMARY KEY (usuario_id)
 );
-
-INSERT INTO usuarios (email, senha) VALUES ("pablolucas890@gmail.com", "123456789");
+INSERT INTO usuarios (email, senha) VALUES ("usuario@gmail.com", "123");
+INSERT INTO usuarios (email, senha) VALUES ("carlos@gmail.com", "123");
+INSERT INTO usuarios (email, senha) VALUES ("maria@gmail.com", "123");
