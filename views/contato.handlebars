@@ -1,0 +1,49 @@
+<h2>Contato</h2>
+
+{{#if dadosValidos}}
+    <div>
+        <strong>Nome: </strong> {{ nome }} <br>
+        <strong>Email: </strong> {{ email }} <br>
+        <strong>Idade: </strong> {{ idade }} <br>
+        Linguagens Selecionadas: <br>
+        {{#if linguagens}}
+            <ul>
+                {{#each linguagens}}
+                    <li>{{ this }}</li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <b>Nenhuma linguagem foi selecionada!</b>
+        {{/if}}
+    </div>
+{{else}}
+    <div style="color: red;">
+        {{ mensagemErro }}
+    </div>
+{{/if}}
+
+<form method="post" action="/contato">
+
+    <p>
+        Nome: <br>
+        <input type="text" name="nome" value="" />        
+    </p>
+    <p>
+        E-mail: <br>
+        <input type="email" name="email" value="" />  
+    </p>
+     <p>
+        Idade: <br>
+        <input type="number" name="idade" value="" />  
+    </p>
+    <p>
+        Linguagens de Programação preferidas: <br>
+        <input type="checkbox" name="linguagens[]" value="C#"> C# <br>
+        <input type="checkbox" name="linguagens[]" value="JavaScript"> JavaScript <br>
+        <input type="checkbox" name="linguagens[]" value="Java"> Java <br>
+        <input type="checkbox" name="linguagens[]" value="ColdFusion"> ColdFusion <br>
+    </p>
+    <button>
+        Enviar
+    </button>
+</form>

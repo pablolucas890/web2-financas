@@ -1,0 +1,57 @@
+<h2 class="text-center w-100 mt-3">{{tituloPagina}}</h2>
+
+{{#if mensagem}}
+<p style="color: {{ cor }};">
+    {{ mensagem }}
+</p>
+{{/if}}
+<div class="mx-md-5 px-md-5">
+    <div class="mx-md-5 px-md-5">
+        <form class="m-5 p-5 bg-light border" method="POST" action="/cadastrar-produto">
+            <div class="form-group my-2">
+                <label for="#">Titulo da Transação</label>
+                <input type="text" class="form-control" id="titulo" name="titulo"
+                    placeholder="Digite o Titulo da Transação">
+                <small id="emailHelp" class="form-text text-muted">Titulo da Transação</small>
+            </div>
+            <div class="form-group my-4 row">
+                <div class="col-6">
+                    <label for="#">Valor (R$)</label>
+                    <div>
+                        <input type="number" class="d-inline form-control w-25" id="valor" name="valor"
+                            placeholder="Valor da Transação">
+                        <h4 class="d-inline">,00</h4>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">Valor da Transação</small>
+                </div>
+                <div class="col-6">
+
+                    <label class="my-2">Tipo</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipo" id="entrada" value="entrada">
+                        <label class="form-check-label" for="entrada">
+                            Entrada
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipo" id="saida" value="saida" checked>
+                        <label class="form-check-label" for="saida">
+                            Saida
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <label class="my-2" for="#">Categoria</label>
+            <select class="form-select" name="categoria" aria-label="Categoria">
+                <option selected>Categoria</option>
+                <option value="1">Estudos</option>
+                <option value="2">Casa</option>
+                <option value="3">Viagem</option>
+                <option value="4">Compras</option>
+                <option value="5">Supermercado</option>
+                <option value="6">Farmacia</option>
+            </select>
+            <button type="submit" class="btn btn-primary my-3">Salvar</button>
+        </form>
+    </div>
+</div>

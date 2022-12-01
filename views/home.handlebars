@@ -1,0 +1,78 @@
+<h2 class="text-center w-100 mt-3">{{tituloPagina}}</h2>
+
+{{#if listafinancas}}
+<div class="px-5">
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Entradas</h5>
+                    <p class="card-text">Veja o total de entradas</p>
+                    <h1 class="h1 bg-success text-light rounded w-100 p-5 ">R$ {{totalEntradas}},00</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Saidas</h5>
+                    <p class="card-text">Veja o total de saidas</p>
+                    <h1 class="h1 bg-danger text-light rounded w-100 p-5 ">R$ {{totalSaidas}},00</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total</h5>
+                    <p class="card-text">Veja o total</p>
+                    <h1 class="h1 bg-primary text-light rounded w-100 p-5 ">R$ {{total}},00</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table id="example" class="table table-bordered mb-5" style="width:100%">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Deletar</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each listafinancas}}
+            {{#if tipo}}
+            <tr class="text-success">
+                {{else}}
+            <tr class="text-danger">
+                {{/if}}
+                <td>{{{ titulo }}}</td>
+                <td>{{{ categoria }}}</td>
+                <td> R$ {{{ valor }}},00</td>
+                <td>{{{ data }}}</td>
+                <td>{{{ hora }}}</td>
+                <td class="text-center"><a href="/excluir-produto/{{{id_financa}}}"><img src="img/trash.png" width="30" alt=""></a></td>
+                <td class="text-center"><a href="/editar-produto/{{{id_financa}}}"><img src="img/edit.png" width="30" alt=""></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Titulo</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Deletar</th>
+                <th>Editar</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+{{else}}
+<p class="text-danger">Não há produtos cadastrados para serem exibidos!</p>
+{{/if}}
